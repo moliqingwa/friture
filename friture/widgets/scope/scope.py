@@ -18,10 +18,11 @@
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt5 import QtWidgets
-from numpy import log10, where, sign, arange, zeros
-from friture.timeplot import TimePlot
+from numpy import log10, sign, arange, zeros
+
 from friture.audiobackend import SAMPLING_RATE
 from friture.logger import PrintLogger
+from friture.widgets.scope.timeplot import TimePlot
 
 SMOOTH_DISPLAY_TIMER_PERIOD_MS = 25
 DEFAULT_TIMERANGE = 2 * SMOOTH_DISPLAY_TIMER_PERIOD_MS

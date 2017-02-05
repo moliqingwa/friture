@@ -4,11 +4,12 @@
 import sys
 
 from PyQt5 import QtWidgets
+from friture.widgets.plotting.glCanvasWidget import GlCanvasWidget
+from friture.widgets.plotting.scaleDivision import ScaleDivision
+from friture.widgets.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget
+
 from friture.audiobackend import SAMPLING_RATE
-from friture.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget
-from friture.plotting.scaleDivision import ScaleDivision
-from friture.plotting.coordinateTransform import CoordinateTransform
-from friture.plotting.glCanvasWidget import GlCanvasWidget
+from friture.widgets.plotting.coordinateTransform import CoordinateTransform
 
 try:
     from OpenGL import GL

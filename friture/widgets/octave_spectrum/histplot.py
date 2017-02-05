@@ -17,13 +17,14 @@
 # You should have received a copy of the GNU General Public License
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5 import QtCore, Qt, QtGui, QtWidgets
-from numpy import zeros, ones, log10, array
 import numpy as np
-from friture.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget
-from friture.plotting.scaleDivision import ScaleDivision
-from friture.plotting.coordinateTransform import CoordinateTransform
-from friture.plotting.canvasWidget import CanvasWidget
+from PyQt5 import QtCore, Qt, QtGui, QtWidgets
+from friture.widgets.plotting.canvasWidget import CanvasWidget
+from friture.widgets.plotting.scaleDivision import ScaleDivision
+from friture.widgets.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget
+from numpy import zeros, ones, log10, array
+
+from friture.widgets.plotting.coordinateTransform import CoordinateTransform
 
 # The peak decay rates (magic goes here :).
 PEAK_DECAY_RATE = 1.0 - 3E-6

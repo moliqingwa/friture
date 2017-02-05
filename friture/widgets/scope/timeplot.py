@@ -18,13 +18,15 @@
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+
 from PyQt5 import Qt, QtGui, QtWidgets
+from friture.widgets.plotting.glCanvasWidget import GlCanvasWidget
+from friture.widgets.plotting.legendWidget import LegendWidget
+from friture.widgets.plotting.scaleDivision import ScaleDivision
+from friture.widgets.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget
 from numpy import interp, linspace, array, ones, zeros
-from friture.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget
-from friture.plotting.scaleDivision import ScaleDivision
-from friture.plotting.coordinateTransform import CoordinateTransform
-from friture.plotting.glCanvasWidget import GlCanvasWidget
-from friture.plotting.legendWidget import LegendWidget
+
+from friture.widgets.plotting.coordinateTransform import CoordinateTransform
 
 try:
     from OpenGL import GL

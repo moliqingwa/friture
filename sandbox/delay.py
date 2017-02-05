@@ -17,16 +17,16 @@
 # You should have received a copy of the GNU General Public License
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
-from numpy import argmax
+import matplotlib.pyplot as plt
 import numpy
 import numpy as np
-from numpy.fft import rfft, irfft, fft, ifft
-from friture.filter import decimate
-from friture import generated_filters
-from friture.ringbuffer import RingBuffer
-from friture.delay_estimator import subsampler, subsampler_filtic, DEFAULT_DELAYRANGE
+from numpy import argmax
+from numpy.fft import rfft, irfft
 from scipy.io import wavfile
-import matplotlib.pyplot as plt
+
+from friture import generated_filters
+from friture.widgets.delay_estimator import subsampler, subsampler_filtic, DEFAULT_DELAYRANGE
+
 
 def generalized_cross_correlation(d0, d1):
     # substract the means

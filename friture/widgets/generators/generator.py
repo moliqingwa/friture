@@ -17,16 +17,16 @@
 # You should have received a copy of the GNU General Public License
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5 import QtGui, QtCore, QtWidgets
 import numpy as np
-import sounddevice
+from PyQt5 import QtGui, QtCore, QtWidgets
+from friture.widgets.generators.burst import BurstGenerator
+from friture.widgets.generators.pink import PinkGenerator
+from friture.widgets.generators.sine import SineGenerator
+from friture.widgets.generators.white import WhiteGenerator
+
 from friture.audiobackend import SAMPLING_RATE
 from friture.logger import PrintLogger
-from friture.generators.sweep import SweepGenerator
-from friture.generators.sine import SineGenerator
-from friture.generators.burst import BurstGenerator
-from friture.generators.pink import PinkGenerator
-from friture.generators.white import WhiteGenerator
+from friture.widgets.generators.sweep import SweepGenerator
 
 SMOOTH_DISPLAY_TIMER_PERIOD_MS = 25
 FRAMES_PER_BUFFER = 2 * 1024

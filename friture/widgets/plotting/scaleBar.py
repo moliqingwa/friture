@@ -1,6 +1,8 @@
 from PyQt5 import QtGui, QtCore, QtWidgets
-from friture.plotting.scaleDivision import numberPrecision
-from friture.plotting import generated_cmrmap
+from friture.widgets.plotting.scaleDivision import numberPrecision
+
+from friture.widgets.plotting import generated_cmrmap
+
 
 # A widget canvas with a baseline, ticks and tick labels
 # The logic of the placement of scale min/max and ticks belongs to another class.

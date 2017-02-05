@@ -17,9 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5 import QtCore, QtGui
 import numpy as np
-from friture.plotting.canvasBackground import CanvasBackground
+from PyQt5 import QtCore, QtGui
+
+from friture.widgets.plotting.canvasBackground import CanvasBackground
 
 
 class Grid:

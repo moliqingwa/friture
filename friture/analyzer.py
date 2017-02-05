@@ -17,10 +17,11 @@
 # You should have received a copy of the GNU General Public License
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
 import os
 import os.path
 import platform
+import sys
+
 from PyQt5 import QtCore
 # specifically import from PyQt5.QtGui and QWidgets for startup time improvement :
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QApplication, QSplashScreen
@@ -33,7 +34,7 @@ from friture.settings import Settings_Dialog  # Setting dialog
 from friture.logger import Logger  # Logging class
 from friture.audiobuffer import AudioBuffer  # audio ring buffer class
 from friture.audiobackend import AudioBackend  # audio backend class
-from friture.centralwidget import CentralWidget
+from friture.widgets.centralwidget import CentralWidget
 from friture.dockmanager import DockManager
 
 # the display timer could be made faster when the processing

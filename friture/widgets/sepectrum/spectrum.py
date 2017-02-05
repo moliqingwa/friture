@@ -18,23 +18,22 @@
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt5 import QtWidgets
-from numpy import log10, argmax, zeros, arange, floor, float64
-from friture.audioproc import audioproc  # audio processing class
-from friture.spectrum_settings import (Spectrum_Settings_Dialog,  # settings dialog
-                                       DEFAULT_FFT_SIZE,
-                                       DEFAULT_FREQ_SCALE,
-                                       DEFAULT_MAXFREQ,
-                                       DEFAULT_MINFREQ,
-                                       DEFAULT_SPEC_MIN,
-                                       DEFAULT_SPEC_MAX,
-                                       DEFAULT_WEIGHTING,
-                                       DEFAULT_RESPONSE_TIME,
-                                       DEFAULT_SHOW_FREQ_LABELS)
-
-from friture.logger import PrintLogger
-from friture.audiobackend import SAMPLING_RATE
-from friture.spectrumPlotWidget import SpectrumPlotWidget
 from friture.exp_smoothing_conv import pyx_exp_smoothed_value_numpy
+from friture.widgets.sepectrum.spectrumPlotWidget import SpectrumPlotWidget
+from numpy import log10, argmax, zeros, arange, floor, float64
+
+from friture.audiobackend import SAMPLING_RATE
+from friture.audioproc import audioproc  # audio processing class
+from friture.logger import PrintLogger
+from friture.widgets.sepectrum.spectrum_settings import (Spectrum_Settings_Dialog,  # settings dialog
+                                       DEFAULT_FFT_SIZE,
+                                                         DEFAULT_MAXFREQ,
+                                                         DEFAULT_MINFREQ,
+                                                         DEFAULT_SPEC_MIN,
+                                                         DEFAULT_SPEC_MAX,
+                                                         DEFAULT_WEIGHTING,
+                                                         DEFAULT_RESPONSE_TIME,
+                                                         DEFAULT_SHOW_FREQ_LABELS)
 
 
 class Spectrum_Widget(QtWidgets.QWidget):

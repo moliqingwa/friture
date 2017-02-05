@@ -19,23 +19,23 @@
 
 """Spectrogram widget, that displays a rolling 2D image of the time-frequency spectrum."""
 
+from fractions import Fraction
+
 from PyQt5 import QtWidgets
 from numpy import log10, floor, zeros, float64, tile, array
-from friture.imageplot import ImagePlot
-from friture.audioproc import audioproc  # audio processing class
-from friture.spectrogram_settings import (Spectrogram_Settings_Dialog,  # settings dialog
-                                          DEFAULT_FFT_SIZE,
-                                          DEFAULT_FREQ_SCALE,
-                                          DEFAULT_MAXFREQ,
-                                          DEFAULT_MINFREQ,
-                                          DEFAULT_SPEC_MIN,
-                                          DEFAULT_SPEC_MAX,
-                                          DEFAULT_TIMERANGE,
-                                          DEFAULT_WEIGHTING)
 
 from friture.audiobackend import SAMPLING_RATE, FRAMES_PER_BUFFER
+from friture.audioproc import audioproc  # audio processing class
 from friture.logger import PrintLogger
-from fractions import Fraction
+from friture.widgets.spectrogram.imageplot import ImagePlot
+from friture.widgets.spectrogram.spectrogram_settings import (Spectrogram_Settings_Dialog,  # settings dialog
+                                                  DEFAULT_FFT_SIZE,
+                                                  DEFAULT_MAXFREQ,
+                                                  DEFAULT_MINFREQ,
+                                                  DEFAULT_SPEC_MIN,
+                                                  DEFAULT_SPEC_MAX,
+                                                  DEFAULT_TIMERANGE,
+                                                  DEFAULT_WEIGHTING)
 
 
 class Spectrogram_Widget(QtWidgets.QWidget):

@@ -18,21 +18,23 @@
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt5 import QtWidgets
-from friture.levels import Levels_Widget
-from friture.spectrum import Spectrum_Widget
-from friture.spectrogram import Spectrogram_Widget
-from friture.octavespectrum import OctaveSpectrum_Widget
-from friture.scope import Scope_Widget
-from friture.generator import Generator_Widget
-from friture.delay_estimator import Delay_Estimator_Widget
-from friture.longlevels import LongLevelWidget
-from friture.controlbar import ControlBar
+
+from friture.defaults import DEFAULT_CENTRAL_WIDGET
+from friture.widgets.controlbar import ControlBar
+from friture.widgets.delay_estimator import Delay_Estimator_Widget
+from friture.widgets.generators.generator import Generator_Widget
+from friture.widgets.levels.levels import Levels_Widget
+from friture.widgets.longlevels import LongLevelWidget
+from friture.widgets.octave_spectrum.octavespectrum import OctaveSpectrum_Widget
+from friture.widgets.scope.scope import Scope_Widget
+from friture.widgets.sepectrum.spectrum import Spectrum_Widget
+from friture.widgets.spectrogram.spectrogram import Spectrogram_Widget
 
 
-class Dock(QtWidgets.QDockWidget):
+class CentralWidget(QtWidgets.QWidget):
 
     def __init__(self, parent, logger, name, widget_type=0):
-        super().__init__(name, parent)
+        super().__init__(parent)
 
         self.setObjectName(name)
 
@@ -43,20 +45,17 @@ class Dock(QtWidgets.QDockWidget):
         self.control_bar.combobox_select.activated.connect(self.widget_select)
         self.control_bar.settings_button.clicked.connect(self.settings_slot)
 
-        self.dockwidget = QtWidgets.QWidget(self)
-        self.layout = QtWidgets.QVBoxLayout(self.dockwidget)
+        self.label = QtWidgets.QLabel(self)
+        self.label.setText(" Central dock ")  # spaces before and after for nicer alignment
+        self.control_bar.layout.insertWidget(0, self.label)
+
+        self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.control_bar)
         self.layout.setContentsMargins(0, 0, 0, 0)
-        self.dockwidget.setLayout(self.layout)
-
-        self.setWidget(self.dockwidget)
+        self.setLayout(self.layout)
 
         self.audiowidget = None
         self.widget_select(widget_type)
-
-    # note that by default the closeEvent is accepted, no need to do it explicitely
-    def closeEvent(self, event):
-        self.parent().dockmanager.close_dock(self)
 
     # slot
     def widget_select(self, item):
@@ -73,11 +72,11 @@ class Dock(QtWidgets.QDockWidget):
         elif item is 2:
             self.audiowidget = Spectrum_Widget(self, self.logger)
         elif item is 3:
-            self.audiowidget = Spectrogram_Widget(self, self.parent().audiobackend, self.logger)
+            self.audiowidget = Spectrogram_Widget(self, self.parent().parent().audiobackend, self.logger)
         elif item is 4:
             self.audiowidget = OctaveSpectrum_Widget(self, self.logger)
         elif item is 5:
-            self.audiowidget = Generator_Widget(self, self.parent().audiobackend, self.logger)
+            self.audiowidget = Generator_Widget(self, self.parent().parent().audiobackend, self.logger)
         elif item is 6:
             self.audiowidget = Delay_Estimator_Widget(self, self.logger)
         elif item is 7:
@@ -85,8 +84,8 @@ class Dock(QtWidgets.QDockWidget):
         else:
             self.audiowidget = Levels_Widget(self, self.logger)
 
-        self.audiowidget.set_buffer(self.parent().audiobuffer)
-        self.parent().audiobuffer.new_data_available.connect(self.audiowidget.handle_new_data)
+        self.audiowidget.set_buffer(self.parent().parent().audiobuffer)
+        self.parent().parent().audiobuffer.new_data_available.connect(self.audiowidget.handle_new_data)
 
         self.layout.addWidget(self.audiowidget)
 
@@ -98,11 +97,17 @@ class Dock(QtWidgets.QDockWidget):
 
     def pause(self):
         if self.audiowidget is not None:
-            self.audiowidget.pause()
+            try:
+                self.audiowidget.pause()
+            except AttributeError:
+                pass
 
     def restart(self):
         if self.audiowidget is not None:
-            self.audiowidget.restart()
+            try:
+                self.audiowidget.restart()
+            except AttributeError:
+                pass
 
     # slot
     def settings_slot(self, checked):
@@ -115,6 +120,6 @@ class Dock(QtWidgets.QDockWidget):
 
     # method
     def restoreState(self, settings):
-        widget_type = settings.value("type", 0, type=int)
+        widget_type = settings.value("type", DEFAULT_CENTRAL_WIDGET, type=int)
         self.widget_select(widget_type)
         self.audiowidget.restoreState(settings)

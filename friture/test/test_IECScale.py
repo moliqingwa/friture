@@ -1,10 +1,11 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
 import sys
+
+import matplotlib.pyplot as plt
+import numpy as np
+
 sys.path.insert(0, '.')
 
-import friture.qsynthmeter as meter
+import friture.widgets.levels.qsynthmeter as meter
 
 scale = meter.IECScale()
 

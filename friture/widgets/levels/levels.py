@@ -19,16 +19,15 @@
 
 """Level widget that displays peak and RMS levels for 1 or 2 ports."""
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 import numpy as np
-from friture.levels_settings import Levels_Settings_Dialog  # settings dialog
-from friture.qsynthmeter import qsynthMeter
-from friture.audioproc import audioproc
-from friture.logger import PrintLogger
-
+from PyQt5 import QtCore, QtGui, QtWidgets
 from friture.exp_smoothing_conv import pyx_exp_smoothed_value
 
 from friture.audiobackend import SAMPLING_RATE
+from friture.audioproc import audioproc
+from friture.logger import PrintLogger
+from friture.widgets.levels.levels_settings import Levels_Settings_Dialog  # settings dialog
+from friture.widgets.levels.qsynthmeter import qsynthMeter
 
 STYLESHEET = """
 qsynthMeter {

@@ -17,16 +17,18 @@
 # You should have received a copy of the GNU General Public License
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 from fractions import Fraction
+
 import numpy as np
-from friture.spectrogram_image import CanvasScaledSpectrogram
-from friture.online_linear_2D_resampler import Online_Linear_2D_resampler
+from PyQt5 import QtCore, QtGui, QtWidgets
+from friture.widgets.spectrogram.spectrogram_image import CanvasScaledSpectrogram
+
 from friture.frequency_resampler import Frequency_Resampler
-from friture.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget, ColorScaleWidget
-from friture.plotting.scaleDivision import ScaleDivision
-from friture.plotting.coordinateTransform import CoordinateTransform
-from friture.plotting.canvasWidget import CanvasWidget
+from friture.online_linear_2D_resampler import Online_Linear_2D_resampler
+from friture.widgets.plotting.canvasWidget import CanvasWidget
+from friture.widgets.plotting.coordinateTransform import CoordinateTransform
+from friture.widgets.plotting.scaleDivision import ScaleDivision
+from friture.widgets.plotting.scaleWidget import VerticalScaleWidget, HorizontalScaleWidget, ColorScaleWidget
 
 
 def tickFormatter(value, digits):

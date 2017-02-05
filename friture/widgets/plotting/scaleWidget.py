@@ -18,9 +18,9 @@
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt5 import QtWidgets
+from friture.widgets.plotting.scaleBar import VerticalScaleBar, HorizontalScaleBar, ColorScaleBar
 
-from friture.plotting.titleWidget import VerticalTitleWidget, HorizontalTitleWidget, ColorTitleWidget
-from friture.plotting.scaleBar import VerticalScaleBar, HorizontalScaleBar, ColorScaleBar
+from friture.widgets.plotting.titleWidget import VerticalTitleWidget, HorizontalTitleWidget, ColorTitleWidget
 
 # A layout widget containing:
 # - a title

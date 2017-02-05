@@ -19,21 +19,19 @@
 
 """Level widget that displays RMS level history."""
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 import numpy as np
-from friture.longlevels_settings import (LongLevels_Settings_Dialog,
-                                         DEFAULT_LEVEL_MIN,
-                                         DEFAULT_LEVEL_MAX)
-from friture.audioproc import audioproc
-from friture.logger import PrintLogger
-from friture.timeplot import TimePlot
-from .filter import decimate
-from friture import generated_filters
-from friture.exp_smoothing_conv import pyx_exp_smoothed_value
-from .ringbuffer import RingBuffer
-from .lfilter import pyx_lfilter_float64_1D
+from PyQt5 import QtWidgets
+from friture.lfilter import pyx_lfilter_float64_1D
 
 from friture.audiobackend import SAMPLING_RATE
+from friture.audioproc import audioproc
+from friture.filter import decimate
+from friture.logger import PrintLogger
+from friture.ringbuffer import RingBuffer
+from friture.widgets.longlevels_settings import (LongLevels_Settings_Dialog,
+                                                 DEFAULT_LEVEL_MIN,
+                                                 DEFAULT_LEVEL_MAX)
+from friture.widgets.scope.timeplot import TimePlot
 
 # signal > square > low-pass filter > filter for screen > log
 

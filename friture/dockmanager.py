@@ -19,8 +19,9 @@
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMainWindow
+
 from friture.defaults import DEFAULT_DOCKS
-from friture.dock import Dock
+from friture.widgets.dock import Dock
 
 
 class DockManager(QtCore.QObject):

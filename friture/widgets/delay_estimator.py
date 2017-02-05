@@ -21,9 +21,9 @@ from PyQt5 import QtGui, QtWidgets
 from numpy import argmax
 import numpy
 from numpy.fft import rfft, irfft
-from .filter import decimate
+from friture.filter import decimate
 from friture import generated_filters
-from .ringbuffer import RingBuffer
+from friture.ringbuffer import RingBuffer
 from friture.logger import PrintLogger
 
 from friture.audiobackend import SAMPLING_RATE

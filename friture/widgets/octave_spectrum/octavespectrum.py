@@ -18,26 +18,22 @@
 # along with Friture.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt5 import QtWidgets
-from numpy import log10, array, arange, where
-from friture.logger import PrintLogger
-from friture.histplot import HistPlot
-from friture.octavespectrum_settings import (OctaveSpectrum_Settings_Dialog,  # settings dialog
-                                             DEFAULT_SPEC_MIN,
-                                             DEFAULT_SPEC_MAX,
-                                             DEFAULT_WEIGHTING,
-                                             DEFAULT_BANDSPEROCTAVE,
-                                             DEFAULT_RESPONSE_TIME)
-
-from friture.filter import (octave_filter_bank_decimation, octave_frequencies,
-                            octave_filter_bank_decimation_filtic, NOCTAVE)
-
 from friture.exp_smoothing_conv import pyx_exp_smoothed_value
-
-from friture import generated_filters
-
-from friture.audiobackend import SAMPLING_RATE
+from numpy import log10, array, arange, where
 
 import friture.renard as renard
+from friture import generated_filters
+from friture.audiobackend import SAMPLING_RATE
+from friture.filter import (octave_filter_bank_decimation, octave_frequencies,
+                            octave_filter_bank_decimation_filtic, NOCTAVE)
+from friture.logger import PrintLogger
+from friture.widgets.octave_spectrum.histplot import HistPlot
+from friture.widgets.octave_spectrum.octavespectrum_settings import (OctaveSpectrum_Settings_Dialog,  # settings dialog
+                                             DEFAULT_SPEC_MIN,
+                                                                     DEFAULT_SPEC_MAX,
+                                                                     DEFAULT_WEIGHTING,
+                                                                     DEFAULT_BANDSPEROCTAVE,
+                                                                     DEFAULT_RESPONSE_TIME)
 
 SMOOTH_DISPLAY_TIMER_PERIOD_MS = 25
 
