@@ -64,26 +64,8 @@ class Scope_Widget(QtWidgets.QWidget):
         if floatdata.shape[0] > 1:
             twoChannels = True
 
-        # trigger on the first channel only
-        triggerdata = floatdata[0, :]
-        # trigger on half of the waveform
-        trig_search_start = width / 2
-        trig_search_stop = -width / 2
-        triggerdata = triggerdata[trig_search_start: trig_search_stop]
-
-        trigger_level = floatdata.max() * 2. / 3.
-        trigger_pos = where((triggerdata[:-1] < trigger_level) * (triggerdata[1:] >= trigger_level))[0]
-
-        if len(trigger_pos) == 0:
-            return
-
-        if len(trigger_pos) > 0:
-            shift = trigger_pos[0]
-        else:
-            shift = 0
-        shift += trig_search_start
         datarange = width
-        floatdata = floatdata[:, shift - datarange / 2: shift + datarange / 2]
+        floatdata = floatdata[:, 0: datarange]
 
         self.y = floatdata[0, :]
         if twoChannels:
